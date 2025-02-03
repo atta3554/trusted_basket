@@ -144,7 +144,7 @@ class Trusted_Product_Basket_Main {
 					$order_total_price = $order->get_total();
 
 					$customer_status = self::send_sms('customer-keep-trusted', $order_owner_phone_number, $order_id, $order_total_price );
-					$admin_status = self::send_sms('admin-keep-trusted', '09032512253', $order_id);
+					$admin_status = self::send_sms('admin-keep-trusted', '{ADMIN-PHONE-NUMBER}', $order_id);
 
 					$order_owner = $order->get_user_id();
 					$shipment_date = get_user_meta($order_owner, 'first_keep_trusted_date', true);
@@ -288,7 +288,7 @@ class Trusted_Product_Basket_Main {
 
 			if(!$this->orders_proccessing_failed) {
 				update_user_meta($user_id, 'first_keep_trusted_date', '');
-				self::send_sms('admin-send-trusted', '09032512253', $customer_nickname);
+				self::send_sms('admin-send-trusted', '{ADMIN-PHONE-NUMBER}', $customer_nickname);
 				self::send_sms('customer-send-trusted', $customer_phone_number, $total_items_count, $total_items_price);
 			}
 		}
@@ -313,7 +313,7 @@ class Trusted_Product_Basket_Main {
 
 	public static function send_sms($template = NULL, $receptor = NULL, $token1 = NULL, $token2 = NULL, $token3 = NULL) {
 		
-		$url = 'https://api.kavenegar.com/v1/50422B6A7A563950525766316B50612F3136617A554E59517948786D2F71487163376A4662536650356C493D/verify/lookup.json';
+		$url = 'https://api.kavenegar.com/v1/{API-Key}/verify/lookup.json';
 
 		$ch = curl_init();
 

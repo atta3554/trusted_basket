@@ -85,7 +85,7 @@ class My_Account_Trusted_Products {
 
 		if(!$this->process_failed) {
 			update_user_meta($customer_id, 'first_keep_trusted_date', '');
-			Trusted_Product_Basket_Main::send_sms('admin-send-trusted', '09032512253', $customer_nickname);
+			Trusted_Product_Basket_Main::send_sms('admin-send-trusted', '{ADMIN-PHONE-NUMBER}', $customer_nickname);
 			Trusted_Product_Basket_Main::send_sms('customer-send-trusted', $customer_phone_number, $total_items_count, $total_items_price);
 			wp_send_json_success(array('message'=> 'success'));
 		} else wp_send_json_error(array('message'=> 'error'));
