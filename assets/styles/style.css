@@ -1,0 +1,132 @@
+@keyframes ataSpin {
+	0%{
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+
+	100%{
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+@keyframes fadeColor {
+	0%{
+		background-color: rgba(255,255,255,0);
+	}
+
+	100%{
+		background-color: rgba(255,255,255,.5);
+	}
+}
+
+@keyframes fadeOut {
+	0%{
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+.woocommerce-order > .woocommerce-notice--success{
+	display: none;
+}
+
+.woocommerce-order .trusted_product_basket-box {
+	display: flex;
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+.woocommerce-order .trusted_product_basket-box .woocommerce-notice--success{
+	width: 50%;
+    text-align: center;
+    border-radius: 12px;
+    min-height: 100%;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing {
+	width: 50%;
+	border: 2px solid var(--e-global-color-primary);
+    border-radius: 12px;
+    padding: 10px;
+	position: relative;
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing .trusted-proccess-finished, .request-send-products .trusted-proccess-finished {
+	position: absolute;
+	inset: 0;
+	z-index: 10;
+	display: flex;
+    align-items: center;
+	background-color: rgba(255,255,255,.8);
+	/* animation: fadeColor .5s linear; */
+	border-radius: 12px;
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing .trusted-proccess-finished svg, .request-send-products .trusted-proccess-finished svg {
+	animation: fadeOut 1s linear forwards;
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing .trusted-proccess-finished svg path:nth-child(1){
+	scale: 1.5;
+	transform-origin: center;
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing > p {
+	text-align: center;
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing > div {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing > div > button{
+    color: white;
+    padding: 6px 12px;
+    font-weight: bold;
+    padding: 6px 30px;
+    border-radius: 4px;
+	position: relative;
+	transition: .3s all ease-in-out;
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing > div > button:first-child {
+	background-color: var(--e-global-color-accent);
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing > div > button:first-child.pending {
+	background-color: #a0e9aa;
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing > div > button:last-child {
+	background-color: var(--e-global-color-primary);
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing > div > button:last-child.pending {
+	background-color: #a8d3e5;
+}
+
+.woocommerce-order .trusted_product_basket-box .check-user-willing > div > button.pending:after, .request-send-products.pending:after{
+	content:'';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	border: 5px solid white;
+	border-right: 5px solid rgb(178, 178, 178);
+	border-radius: 500px;
+	transition: .3s all ease-in-out;
+	animation: ataSpin 1s linear infinite;
+	width: 20px;
+	height: 20px;
+}
+
+.request-send-products{
+	position: relative;
+}
